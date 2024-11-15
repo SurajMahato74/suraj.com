@@ -1,0 +1,203 @@
+/* Portfolio Section Styling */
+.portfolio-section {
+    padding: 40px;
+    
+    text-align: center;
+}
+
+.portfolio-section h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Filter Container Styling */
+.filter-container {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #007b8a;
+}
+
+/* Portfolio Container Styling */
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Portfolio Card Styling */
+.portfolio-card {
+    display: flex;
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Client Info Styling */
+.client-info {
+    padding: 20px;
+    width: 50%;
+    text-align: left;
+}
+
+.client-logo {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.client-info h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+}
+
+.client-info p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Project Image Styling */
+.project-image {
+    position: relative;
+    width: 50%;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.demo-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #00bcd4;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.demo-button:hover {
+    background-color: #007b8a;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    /* Adjust portfolio card layout on tablets */
+    .portfolio-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .client-info, .project-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .project-image img {
+        height: auto;
+    }
+
+    .client-info h2, .client-info p {
+        text-align: center;
+    }
+
+    .demo-button {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Smaller padding for sections on mobile */
+    .portfolio-section {
+        padding: 20px;
+    }
+
+    /* Adjust filter buttons on mobile */
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+
+    /* Portfolio card layout on mobile */
+    .portfolio-card {
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 20px;
+    }
+
+    .client-info h2 {
+        font-size: 1.3em;
+    }
+
+    .client-info p {
+        font-size: 0.85em;
+    }
+
+    .demo-button {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust heading and button size on extra small screens */
+    .portfolio-section h1 {
+        font-size: 1.8em;
+    }
+
+    .filter-btn {
+        padding: 5px 10px;
+        font-size: 0.85em;
+    }
+
+    /* Portfolio card layout on very small screens */
+    .portfolio-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .client-info h2 {
+        font-size: 1.2em;
+    }
+
+    .client-info p {
+        font-size: 0.8em;
+    }
+
+    .demo-button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+}
+

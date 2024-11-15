@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SurajMahato.com</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="indexport.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+   <style>
+.download-resume {
+    display: inline-block;
+   margin-left: 280px;
+    padding: 8px 12px;
+    border: 1px solid #00bcd4;
+    color: #00bcd4;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.intro-section {
+    display: flex;
+    margin-left: 100px;
+    margin-top: 200px;
+    justify-content: center;
+    padding: 20px;
+    text-align: justify;
+    max-width: 900px;
+}
+
+
+
+.text-container {
+    display: flex;
+    align-items: center;
+  
+    width: 120%;
+}
+
+.header-text {
+    text-align: left;
+    
+    margin-left: 50px;
+
+}
+
+.small-text {
+    font-size: 5rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+.medium-text {
+    font-size: 7.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.large-text {
+    font-size: 9.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sub-text {
+    max-width: 400px;
+    margin-left: 20px;
+    font-size: 2rem;
+    
+    line-height: 1.5;
+    margin-top: 50px;
+}
+
+
+
+
+
+.portfolio-section {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.portfolio-header p {
+    font-size: 4rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.portfolio-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.portfolio-link span {
+    font-size: 10rem;
+    color: #00bcd4;
+    margin-bottom: 10px;
+}
+
+.portfolio-link a {
+    font-size: 2rem;
+    color: #00bcd4;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.portfolio-link a:hover {
+    text-decoration: underline;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 30px;
+}
+
+.portfolio-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.abc{
+    margin-left: -10px;
+    margin-top: 30px;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .download-resume {
+        margin-left: 0;
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .intro-section {
+        flex-direction: column;
+        margin-left: 20px;
+        margin-top: 50px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .text-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header-text {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .small-text {
+        font-size: 3rem;
+    }
+
+    .medium-text {
+        font-size: 4.5rem;
+    }
+
+    .large-text {
+        font-size: 6rem;
+    }
+
+    .sub-text {
+        margin: 20px auto;
+        font-size: 1.2rem;
+    }
+
+   
+
+    .portfolio-header p {
+        font-size: 1.5rem;
+    }
+
+    .portfolio-link span {
+        font-size: 3rem;
+    }
+
+    .portfolio-link a {
+        font-size: 1.2rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and below) */
+@media (max-width: 768px) {
+    .download-resume {
+        
+        margin-left: 0;
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+
+    .intro-section {
+        margin-left: 40px;
+       
+    }
+
+    .text-container {
+        width: 100%;
+        margin-top: -100px;
+        margin-left: -50px;
+    }
+
+    .small-text {
+        font-size: 4rem;
+    }
+
+    .medium-text {
+        font-size: 5.5rem;
+    }
+
+    .large-text {
+        font-size: 7.5rem;
+    }
+
+    .sub-text {
+        font-size: 1.5rem;
+        
+        display: none;
+    }
+
+  
+
+    .portfolio-header p {
+        font-size: 2.5rem;
+    }
+
+    .portfolio-link span {
+        font-size: 5rem;
+    }
+
+    .portfolio-link a {
+        font-size: 1.5rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* Large devices (small laptops, 992px and below) */
+@media (max-width: 992px) {
+    .download-resume {
+        margin-left: 0;
+        padding: 8px 12px;
+    }
+
+    .intro-section {
+        margin-left: 60px;
+        margin-top: 150px;
+    }
+
+    .text-container {
+        width: 100%;
+    }
+
+    .small-text {
+        font-size: 4.5rem;
+    }
+
+    .medium-text {
+        font-size: 6rem;
+    }
+
+    .large-text {
+        font-size: 8rem;
+    }
+
+    .sub-text {
+        font-size: 1.75rem;
+    }
+
+    .portfolio-header p {
+        font-size: 3rem;
+    }
+
+    .portfolio-link span {
+        font-size: 6rem;
+    }
+
+    .portfolio-link a {
+        font-size: 1.8rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+}
+
+/* Extra-large devices (large laptops and desktops, 1200px and below) */
+@media (max-width: 1200px) {
+    .text-container {
+        width: 100%;
+    }
+
+    .small-text {
+        font-size: 5rem;
+    }
+
+    .medium-text {
+        font-size: 7rem;
+    }
+
+    .large-text {
+        font-size: 9rem;
+    }
+
+    .sub-text {
+        font-size: 2rem;
+    }
+
+    .portfolio-header p {
+        font-size: 3.5rem;
+    }
+
+    .portfolio-link span {
+        font-size: 8rem;
+    }
+
+    .portfolio-link a {
+        font-size: 2rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+
+}
+
+
+/* Base Style */
+hr.responsive-hr {
+    width: 80%;
+    border: 3px solid #000; /* Adjust color as needed */
+    text-align: center;
+    margin-left: 100px;
+}
+
+/* Small devices (600px and below) */
+@media (max-width: 600px) {
+    hr.responsive-hr {
+        width: 90%; /* Increase width for smaller screens */
+        margin-left: 5%; /* Center the hr */
+    }
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+    hr.responsive-hr {
+        width: 85%; 
+        margin-left: 7.5%;
+    }
+}
+
+/* Large devices (992px and below) */
+@media (max-width: 992px) {
+    hr.responsive-hr {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
+/* Extra-large devices (1200px and below) */
+@media (max-width: 1200px) {
+    hr.responsive-hr {
+        width: 75%;
+        margin-left: 12.5%;
+    }
+}
+
+
+
+
+    </style>
+   </style>
+    
+    </head>    
+
+
+
+<body>
+    
+   
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-image">
+        <img src="suraj.jpg" alt="Profile Image">
+        <div class="sidebar-name-overlay">
+            <p>Suraj Mahato</p>
+        </div>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="active"><a href="#"><i class="bx bx-home"></i>Home</a></li>
+        <hr>
+        <li><a href="aboutme.html" id="about-link" ><i class="bx bx-user"></i>About Me</a></li>
+        <hr>
+        <li><a href="cv.html"><i class="bx bx-file"></i>Resume</a></li>
+        <hr>
+        <li><a href="myportfolio.html"><i class="bx bx-briefcase"></i>Portfolio</a></li>
+        <hr>
+        <li><a href="myblog.html"><i class="bx bx-news"></i>Blog</a></li>
+        <hr>
+        <li><a href="contactme.html"><i class="bx bx-envelope"></i>Contact</a></li>
+    </ul>
+    <!-- Close button inside the sidebar -->
+    <i class='bx bx-x' id="close-btn"></i>
+</div>
+
+<!-- Menu icon (hamburger icon) -->
+<i class='bx bx-menu' id="menu-icon"></i>
+<div class="social-media">
+    <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
+    <a href="#"><i class='bx bxl-whatsapp'></i></a>
+    <a href="#"><i class='bx bxl-linkedin'></i></a>
+    <a href="#"><i class='bx bxl-github'></i></a>
+    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"><i class='bx bxl-gmail'></i></a>
+</div>
+
+<div class="profile-container">
+    <div class="follow">Follow</div>
+    
+</div>
+
+
+<div class="chatbot-icon">
+    <a href="#"><i class='bx bxs-chat'></i></a>
+</div>
+
+
+    <div class="content" id="content-section">
+        <section class="home" id="home">
+            <div class="home-content">
+                <h3>Hello, It's me </h3>
+                <h1>Suraj <span>Mahato</span> </h1>
+                <h4>And I'm a <span id="multiple-text"></span></h4>
+                <div class="quote-container">
+                   
+                    <p class="quote-text">
+                        Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.
+                        
+                    </p>
+                    <i class='bx bxs-quote-right quote-icon right'></i>
+                </div>
+                <a href="resume.html" class="cv-btn" style="margin-right: 15px;">Download CV</a>
+                
+            </div>
+            
+            <div class="home-img">
+                <img src="main.jpg" alt="Suraj Mahato">
+            </div>
+
+           
+        </section>
+
+
+        <section class="intro-section">
+            <div class="text-container">
+                
+                <div class="sub-text">
+                    
+                    <a href="#" class="download-resume">Read More</a>
+                    <p>Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p>
+                  
+                </div>
+
+                <div class="header-text">
+                    <p class="small-text"><span>we</span></p>
+                    <p class="medium-text">build</p>
+                    <p class="large-text"><span>digital</span></p>
+                </div>
+
+            </div>
+        </section>
+        
+        <hr>
+
+
+        <section class="portfolio-section">
+            <div class="portfolio-header">
+                <p>We design People Inspired Experiences that create positive change in people's lives.</p>
+                <div class="portfolio-link">
+                    <span>↓</span>
+                    <a href="#">VIEW PORTFOLIO</a>
+                </div>
+            </div>
+            <div class="portfolio-grid">
+                <img src="suraj.jpg" alt="Portfolio Image 1">
+                <img src="suraj.jpg" alt="Portfolio Image 2">
+                <img src="suraj.jpg" alt="Portfolio Image 3">
+                <img src="suraj.jpg" alt="Portfolio Image 4">
+                <img src="suraj.jpg" alt="Portfolio Image 1">
+                <img src="suraj.jpg" alt="Portfolio Image 2">
+                <img src="suraj.jpg" alt="Portfolio Image 3">
+                <img src="suraj.jpg" alt="Portfolio Image 4">
+            </div>
+            <a href="#" class="download-resume abc">View More</a>
+        </section>
+
+        
+
+   
+        <section class="services" id="services">
+            <h2 class="heading">Our<span> Services</span></h2>
+            <div class="services-carousel">
+                <div class="services-box center">
+                    <i class='bx bx-code-alt'></i>
+                    <h3>Web Development</h3>
+                    <p>We build custom websites and web applications tailored to your needs.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+        
+                <div class="services-box left">
+                    <i class='bx bxs-paint'></i>
+                    <h3>Graphic Design</h3>
+                    <p>We design visually stunning and effective graphics for your business.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+        
+                <div class="services-box right">
+                    <i class='bx bx-line-chart'></i>
+                    <h3>Digital Marketing</h3>
+                    <p>We help grow your business with effective digital marketing strategies.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>       
+            
+            <div class="service-progress-bar">
+                <div class="service-progress"></div>
+            </div>
+
+        </section>
+        
+        
+       
+        
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+            </div>
+
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Email Subject">
+            </div>
+            <textarea name="" id="" cols="" rows="" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+
+    </section>
+    <div class="footer-iconTop">
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a></div>
+
+    </div>
+
+
+
+</main>
+    <footer class="footer">
+        <div class="footer-text">
+            <p> Copyright &copy; 2023 by Suraj Mahato | All right reserved.</p>
+        </div>
+        
+    </footer>
+    
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="script.js"></script>
+
+
+
+
+</body>
+
+</html>

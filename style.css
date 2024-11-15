@@ -1,0 +1,1451 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #1f242d;
+    --second-bg-color: #323946;
+    --text-color: #fff;
+    --main-color: #0ef;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+   
+    
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Optional: Set a font family */
+    overflow: hidden;
+}
+
+#content-section {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1; /* Ensure content is initially visible */
+}
+
+
+.content {
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Slide-out animation */
+.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Slide-in animation */
+.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+
+
+
+.sidebar {
+    width: 200px; /* Adjust width as needed */
+    background-color: #333; /* Sidebar background color */
+    color: white; /* Text color for sidebar */
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
+    left: 0; /* Align to the left */
+    transition: transform 0.3s ease; /* Smooth transition */
+    z-index: 1000;
+    overflow: hidden;
+    
+    transform: translateX(-100%); /* Hide sidebar initially */
+}
+
+/* Make sidebar visible on larger screens */
+@media screen and (min-width: 768px) {
+    .sidebar {
+        transform: translateX(0); /* Show sidebar */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar */
+    }
+}
+
+/* Content margin adjustments */
+/* Content margin adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .content {
+        margin-left: 0; /* No left margin when sidebar is hidden */
+        padding: 20px; /* Maintain padding */
+    }
+    
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar by default */
+        transition: transform 0.3s ease; /* Smooth transition */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar on active */
+    }
+
+    .sidebar.active + #menu-icon {
+        display: none; /* Hide menu icon when sidebar is active */
+    }
+}
+
+
+/* Sidebar image container */
+.sidebar-image {
+    width: 100%; /* Full width of the sidebar */
+    padding-top: 100%; /* Maintain a square aspect ratio */
+    position: relative; /* For absolute positioning of the image */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.sidebar-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+}
+
+/* Overlay for the name at the bottom of the image */
+.sidebar-name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width of the image */
+    background-color: var(--second-bg-color); /* Light, semi-transparent background */
+    text-align: center; /* Center the text */
+    padding: 10px 0; /* Padding for text area */
+}
+
+.sidebar-name-overlay p {
+    font-size: 1.6rem; /* Adjust font size as needed */
+    color: var(--main-color); /* White text color */
+    font-weight: bold; /* Bold text */
+    margin: 0;
+}
+
+
+
+
+.sidebar .logo {
+    padding: 20px;
+    font-size: 24px;
+    display: block;
+    color: white; /* Text color for logo */
+}
+/* Sidebar Menu Styling */
+.sidebar-menu {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+
+}
+
+.sidebar-menu li {
+    padding: 15px 20px; /* Padding for menu items */
+    display: flex;
+    align-items: center;
+    position: relative; /* To handle shadow effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-menu li:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow for a pop-up effect */
+}
+
+.sidebar-menu li a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1.6rem; /* Adjust font size */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+
+
+.sidebar-menu li i {
+    font-size: 2rem; /* Icon size */
+    color: var(--main-color); /* Icon color (light cyan or similar) */
+}
+
+/* Sidebar active link styling */
+.sidebar-menu li.active a {
+    color: var(--main-color); /* Highlight the text with main color */
+    font-weight: bold; /* Make the active link bold */
+}
+
+/* Additional styling for active indicator */
+.sidebar-menu li.active {
+    background-color: rgba(0, 0, 0, 0.1); /* Optional: Slight background change for active item */
+    border-left: 4px solid var(--main-color); /* Optional: Add a colored border to the left */
+}
+
+
+/* Horizontal separator between menu items */
+hr {
+    border: none; /* Remove default border */
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2); /* Light separator line */
+    margin: 0; /* Remove default margin */
+}
+
+/* 3D shadow effect */
+.sidebar-menu li::before {
+    content: '';
+    position: absolute;
+    top: 3px; /* Adjust shadow position */
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    
+    z-index: -1; /* Keep shadow behind the element */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Subtle 3D shadow effect */
+    border-radius: 4px; /* Optional: Add rounded corners */
+    transform: scale(0.98); /* Slight shrink to create depth */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* On hover, expand the shadow effect */
+.sidebar-menu li:hover::before {
+    transform: scale(1); /* Return to full scale on hover */
+}
+
+/* Adjust hover effect for the links */
+.sidebar-menu li:hover a {
+    color: var(--main-color); /* Change text color on hover */
+}
+
+/* Adjust hover effect for the icons */
+.sidebar-menu li:hover i {
+    color: var(--main-color); /* Highlight icon on hover */
+}
+.content {
+    margin-left: 200px; /* Space for the sidebar */
+    padding: 20px;
+    flex-grow: 1; /* Allow the content to grow */
+    color: white; /* Text color for content */
+    
+}
+
+/* Menu icon styles */
+#menu-icon {
+    font-size: 30px; /* Size of the icon */
+    color: white; /* Color of the icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: none; /* Hide by default */
+    position: fixed; /* Fixed positioning */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Hide menu icon on larger screens (min-width: 768px and above) */
+@media screen and (min-width: 768px) {
+    #menu-icon {
+        display: none; /* Hide the menu icon on larger screens */
+    }
+}
+
+/* Show menu icon only on smaller screens (max-width: 768px and below) */
+@media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Show the menu icon on smaller screens */
+        /* Positioning already set above, no changes needed */
+    }
+}
+
+
+/* Close button styles */
+#close-btn {
+    font-size: 30px;
+    color: var(--main-color);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none; /* Hidden by default */
+    z-index: 1001; /* Keep above everything */
+    background-color: black; /* Black background */
+    border-radius: 50%; /* Make it circular */
+    padding: 10px; /* Adjust padding for proper size */
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the text inside the circle */
+    font-weight: bold; /* Make the text bold */
+}
+
+
+/* When sidebar is active, hide menu icon */
+.sidebar.active + #menu-icon {
+    display: none;
+}
+
+/* Show the close button when sidebar is active */
+.sidebar.active #close-btn {
+    display: block;
+}
+
+/* Hide close button when sidebar is not active */
+#close-btn {
+    display: none;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Show the menu icon on smaller screens */
+    }
+
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar on active */
+    }
+
+    .content {
+        margin-left: 0; /* No margin on mobile */
+    }
+
+    /* Show close button inside sidebar */
+    .sidebar.active #close-btn {
+        display: block;
+    }
+
+    /* Hide the menu icon when the sidebar is active */
+    .sidebar.active + #menu-icon {
+        display: none;
+    }
+}
+
+
+/* Hide menu icon on larger screens */
+@media screen and (min-width: 768px) {
+    #menu-icon {
+        display: none; /* Hide the menu icon on larger screens */
+    }
+}
+
+
+/* Container styling */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    gap: 15px; /* Space between Follow and the like button */
+}
+
+/* Follow text styling */
+.follow {
+    
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+   
+   
+}
+
+
+.follow:hover {
+    background: var(--second-bg-color);
+    color: var(--main-color);
+}
+
+
+
+
+
+
+
+
+
+
+.home {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 620px;
+}
+
+span {
+    color: var(--main-color);
+}
+
+.home-img {
+    width: 24vw; /* Set the desired size for the image container */
+    height: 24vw; /* Ensure the height is the same as the width for a perfect circle */
+    border-radius: 50%; /* Makes the container a perfect circle */
+    overflow: hidden; /* Hide any overflow from the image */
+    display: flex; /* Optional: to center the image inside the circle */
+    justify-content: center; /* Optional: center horizontally */
+    align-items: center; /* Optional: center vertically */
+    animation: floatImage 4s ease-in-out infinite;
+    margin-left: -500px;
+}
+
+.home-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image is cropped to fit within the circle */
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2.4rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.home-content h4 {
+    font-size: 2.6rem;
+    font-weight: 400;
+    margin-left: 40px;
+    
+}
+
+.home-content h3 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    margin-left: 40px;
+}
+
+.home-content h1 {
+    font-size: 6.8rem;
+    font-weight: 700;
+    margin-left: 40px;
+    margin-top: -5px;
+   
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    .home {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: left; /* Center elements */
+        text-align: left; /* Center text */
+        padding: 0 20px; /* Add some padding for better spacing */
+        height: 896px;
+    }
+    .home-img {
+        width: 60vw; /* Larger size on smaller screens */
+        height: 60vw; /* Maintain circular shape */
+        margin: 0 auto; /* Center the image without any bottom margin */
+        order: -1; /* Bring the image to the top */
+        margin-top: -40px;
+    }
+    
+    .home-content h1 {
+        margin-top: -100px;
+        font-size: 4.2rem; /* Adjusted for better readability */
+        margin: 0 0 10px 0; /* Remove top margin, keep bottom margin */
+    }
+
+    .home-content h3 {
+        font-size: 2.4rem;
+        margin-top: -200px; /* Adjusted for positioning */
+        text-align: left; /* Ensure the text is aligned to the left */
+        margin-left: 0; /* Ensure it is flush with the left side */
+    }
+    
+
+    .home-content h4 {
+        font-size: 2rem;
+        margin: 5px 0;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .quote-container {
+        max-width: 100%; /* Use full width on mobile */
+        margin: 20px auto; /* Center the container */
+       
+        padding: 0 20px; /* Add padding for better spacing */
+    }
+
+    .quote-icon {
+        font-size: 40px; /* Smaller size for mobile */
+        opacity: 0.3; /* Subtle appearance */
+        position: absolute;
+        left: 50px; /* Align to the left side of the container */
+         /* Position near the top */
+    }
+
+    .quote-text {
+        margin-left: -60px; /* Add space to avoid overlapping with the icon */
+        font-size: 1.6rem; /* Adjust for readability */
+        line-height: 1.6; /* Maintain spacing */
+    }
+}
+
+
+
+
+
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Show the menu icon on smaller screens */
+    }
+
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar on active */
+    }
+
+    .content {
+        margin-left: 0; /* No margin on mobile */
+    }
+}
+
+
+#multiple-text {
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: underline;
+    text-decoration-color: white;
+    font-style: normal; /* Ensures no italic style is applied */
+}
+
+
+.quote-container {
+    max-width: 50%;
+    text-align: left;
+    position: relative;
+    color: white;
+    margin-left: 40px;
+}
+
+.quote-icon {
+    font-size: 80px;
+    opacity: 0.5;
+    position: absolute;
+}
+
+
+
+.right {
+    right: -55px;
+    bottom: -40px;
+    color: var(--main-color); /* Orange for the right quote */
+}
+
+.quote-text {
+    
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: justify; /* Ensures text is justified and aligned straight */
+    text-indent: 0; /* No indentation */
+}
+
+
+
+.social-media {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: 0.2rem solid var(--main-color);
+    border-radius: 50%; /* Circular icons */
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 0;
+    transition: 0.5s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for a 3D effect */
+}
+
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--second-bg-color);
+    box-shadow: 0 0 15px var(--main-color), 0 0 25px var(--main-color);
+    transform: scale(1.1); /* Slight scaling on hover */
+}
+
+
+
+.chatbot-icon {
+    position: fixed;  /* Stays at the same position on screen */
+    right: 10px;      /* Distance from the right edge */
+    bottom: 20px;     /* Distance from the bottom edge */
+    z-index: 9999;    /* Ensures it's above all other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: var(--main-color);
+    border: 0.2rem solid var(--second-bg-color); /* Circular border */
+    border-radius: 50%;  /* Makes the icon circular */
+    font-size: 2rem;
+    color: var(--main-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
+    transition: 0.5s ease;
+}
+
+.chatbot-icon a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.chatbot-icon:hover {
+    background: var(--main-color);
+    color: var(--second-bg-color);
+    box-shadow: 0 0 15px var(--main-color), 0 0 25px var(--main-color);
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+
+
+
+.cv-btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--second-bg-color);
+    letter-spacing: 1 rem;
+    font-weight: 600;
+    transition: .5s ease;
+    margin-top: 20px;
+    margin-left: 40px;
+   
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--second-bg-color);
+    letter-spacing: 1 rem;
+    font-weight: 600;
+    transition: .5s ease;
+    margin-top: 20px;
+    margin-left: 40px;
+   
+}
+
+
+.btn:hover {
+    background: var(--second-bg-color);
+    color: var(--main-color);
+}
+
+@media screen and (max-width: 768px) {
+    .cv-btn {
+        padding: 1.2rem 3.2rem; /* Increase padding for easier tapping */
+        font-size: 1.4rem; /* Slightly smaller font size for compact layout */
+        margin-top: 70px;
+        margin-left: 70px;
+    }
+}
+
+
+
+/* Keyframe animation to grow the section horizontally */
+@keyframes growWidth {
+    from {
+        transform: scaleX(0); /* Start with no width */
+        transform-origin: left; /* Grow from the left */
+    }
+    to {
+        transform: scaleX(1); /* Full width */
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: space-between; /* Distribute image and content properly */
+    align-items: stretch; /* Stretch content and image to align in height */
+    padding: 0;
+    position: relative;
+    flex-wrap: wrap; /* Ensure responsiveness for smaller screens */
+    gap: 0; /* No gap between image and content */
+    background: var(--second-bg-color);
+    margin-left: 20px;
+    right: 40px;
+    transform: scaleX(0); /* Initial scale (shrink horizontally) */
+    transform-origin: left; /* Grow from the left side */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about.active {
+    animation: growWidth 0.8s forwards; /* Apply the grow animation */
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+}
+
+/* About image styling */
+.about-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-left: 10px;
+    max-width: 350px; /* Add a maximum width for the image container */
+}
+
+.about-img img {
+    width: 100%; /* Ensure the image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image fits nicely in the container */
+    border-radius: 10px;
+    max-width: 100%; /* Prevent the image from overflowing the container */
+    max-height: 400px; /* Limit the height as well */
+}
+
+
+
+/* About content styling */
+.about-content {
+    flex: 1;
+    color: white;
+    padding: 2rem;
+    border-radius: 0 2rem 2rem 0;
+    z-index: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    margin-right: 50px;
+    transition: 0.5s ease;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-img, .about-content {
+        width: 90%;
+        margin-bottom: 2rem;
+    }
+
+    .about-img img {
+        height: auto;
+    }
+}
+
+/* Headings and paragraph adjustments */
+.about-content h2 {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    margin: 0 0 1rem;
+}
+
+.about-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-content .btn {
+    width: 200px;
+    text-align: center;
+    margin-left: -2px;
+}
+
+
+/* Responsive layout for smaller screens */
+@media screen and (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-img, .about-content {
+        flex: none;
+        width: 90%; /* Use 90% width for both sections */
+        margin-bottom: 2rem;
+    }
+
+    .about-img img {
+        height: auto; /* Ensure image adjusts properly */
+    }
+}
+
+
+
+
+/* General styling */
+.services {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 140px;
+    margin-bottom: 100px;
+    
+}
+
+.heading {
+    font-size: 3.6rem;
+    margin-bottom: 3rem;
+    color: var(--main-color);
+}
+
+/* Services carousel container */
+.services-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    width: 100%; /* Ensure the carousel spans the full width */
+    margin-top: 2rem;
+}
+
+/* Service box styles */
+.services-box {
+    width: 300px;
+    height: 250px; /* Set consistent height for all boxes */
+    padding: 2rem;
+    background: var(--second-bg-color);
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 1s ease, opacity 1s ease;
+    opacity: 0.5; /* Start with lower opacity for non-center cards */
+    position: absolute; /* Absolute positioning for carousel effect */
+    top: 0; /* Ensure vertical alignment */
+}
+
+/* Center box styling */
+.services-box.center {
+    transform: scale(1.2) translateX(0);
+    z-index: 2;
+    opacity: 1;
+}
+
+/* Left and right box styling */
+.services-box.left {
+    transform: scale(0.8) translateX(-280px); /* Adjusted to reduce gap */
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.services-box.right {
+    transform: scale(0.8) translateX(280px); /* Adjusted to reduce gap */
+    z-index: 1;
+    opacity: 0.5;
+    right: 350px;
+}
+
+
+
+/* Adjusting z-index for stacking */
+.services-box {
+    z-index: 1;
+}
+
+/* Service box icon styling */
+.services-box i {
+    font-size: 8rem; /* Increased icon size */
+    color: var(--main-color); /* Match the icon color with the button color */
+    margin-bottom: 1rem; /* Add spacing between icon and text */
+}
+
+/* Progress bar container */
+.service-progress-bar {
+    width: 300px; /* Match the width of the services box */
+    height: 5px; /* Height of the progress bar */
+    background: rgba(0, 0, 0, 0.1); /* Light background for the bar */
+    margin: 1rem auto; /* Center the progress bar */
+    margin-top: -100px;
+    border-radius: 10px; /* Rounded edges */
+    overflow: hidden; /* Hide overflow for inner progress */
+}
+
+/* Inner progress */
+.service-progress {
+    height: 100%; /* Fill height of the container */
+    background: var(--main-color); /* Progress color */
+    width: 0; /* Start with 0 width */
+    transition: width 5s linear; /* Smooth transition for width */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .heading {
+        font-size: 3rem; /* Smaller font size for medium screens */
+    }
+    
+    .services-box {
+        width: 200px; /* Decrease box width */
+        height: 200px; /* Decrease box height */
+    }
+
+    .service-progress-bar {
+        width: 250px; /* Adjust progress bar width */
+    }
+}
+
+@media (max-width: 992px) {
+    .services {
+        padding: 1.5rem; /* Reduce padding */
+    }
+
+    .heading {
+        font-size: 2.5rem; /* Smaller font size for small screens */
+    }
+
+    .services-carousel {
+        height: 350px; /* Reduce carousel height */
+    }
+
+    .services-box {
+        width: 220px; /* Further decrease box width */
+        height: 180px; /* Further decrease box height */
+    }
+
+    .service-progress-bar {
+        width: 220px; /* Adjust progress bar width */
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        padding: 1rem; /* Reduce padding */
+        margin-top: 100px; /* Adjust margin for smaller screens */
+        margin-bottom: 60px; /* Adjust margin for smaller screens */
+    }
+
+    .heading {
+        font-size: 2rem; /* Smaller font size for mobile */
+    }
+
+    .services-carousel {
+        height: 300px; /* Reduce carousel height */
+    }
+
+    .services-box {
+        width: 90%; /* Full width for mobile */
+        height: auto; /* Auto height for flexibility */
+        padding: 1rem; /* Adjust padding */
+        margin: 10px; /* Add margin for spacing */
+    }
+
+    .service-progress-bar {
+        width: 90%; /* Full width for mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    .heading {
+        font-size: 3.4rem; /* Even smaller font size for very small screens */
+    }
+
+    .services-carousel {
+        height: 250px; /* Reduce carousel height */
+    }
+
+    .services-box {
+        width: 70%; /* Almost full width */
+        height: auto; /* Auto height for flexibility */
+    }
+
+    .btn{
+        margin-left: -10px;
+    }
+
+    
+}
+
+
+/* Responsive adjustments for progress bar */
+@media (max-width: 768px) {
+    .service-progress-bar {
+        margin-top: 100px; /* Adjust position for mobile */
+    }
+}
+
+
+.portfolio {
+    background: var(--second-bg-color);
+    margin-left: -20px;
+    margin-top: 200px;
+    padding-bottom: 50px;
+    margin-right: 50px;
+    transform: scaleY(0); /* Start hidden */
+    transform-origin: top; /* Grow from the top */
+    transition: transform 0.5s ease, box-shadow 0.5s ease; 
+    border-radius: 0 3rem 3rem 0; /* Top right and bottom right corners rounded */
+
+    
+}
+
+.portfolio.active { 
+    transform: scaleY(1); /* Grow to full height when active */
+    animation: growHeight 0.8s forwards; /* Apply the grow animation */
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+}
+
+@keyframes growHeight {
+    from {
+        transform: scaleY(0); /* Start from a scaled-down state */
+    }
+    to {
+        transform: scaleY(1); /* End at full height */
+    }
+}
+
+.portfolio h2 {
+    
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+/* Filter buttons container */
+.filter-buttons {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--main-color); /* Add border with main color */
+    background-color: transparent; /* Remove background color */
+    color: var(--main-color); /* Set text color to main color */
+    margin-right: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Include transitions for color and shadow */
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--main-color);
+    color: var(--second-bg-color);
+    transform: scale(1.1); /* Slight scaling on hover */
+}
+
+
+
+
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    margin-left: 50px;
+    width: 93%;
+   
+}
+
+
+/* Container for the portfolio box */
+.portfolio-box {
+    position: relative;
+    border-radius: 2rem 2rem 0 0;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 60px; /* Space for the rope */
+    
+    /* Pendulum animation */
+    animation: pendulum 3s ease-in-out infinite;
+    transform-origin: top center; /* Fix at the top for hanging effect */
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    
+}
+
+
+
+
+/* Pendulum animation for the box */
+@keyframes pendulum {
+    0% {
+        transform: rotate(10deg); /* Swing to one side */
+    }
+    50% {
+        transform: rotate(-10deg); /* Swing to the other side */
+    }
+    100% {
+        transform: rotate(10deg); /* Return to original */
+    }
+}
+
+/* Rope swinging animation */
+@keyframes rope-swing {
+    0% {
+        transform: translateX(-50%) rotate(10deg); /* Swing to one side */
+    }
+    50% {
+        transform: translateX(-50%) rotate(-10deg); /* Swing to the other side */
+    }
+    100% {
+        transform: translateX(-50%) rotate(10deg); /* Return to original */
+    }
+}
+
+
+.portfolio-box img {
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.05);
+}
+
+.progress-section {
+    padding: 1rem;
+    background: var(--main-color); /* Set to white */
+}
+
+.tech-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #555;
+}
+
+.progress-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.progress {
+    flex: 1;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    position: relative;
+}
+
+.progress::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #4285f4; /* Default color, change per need */
+    width: var(--progress-width, 0%);
+    transition: width 0.3s ease;
+}
+
+/* Example of custom colors for different progress bars */
+.progress-html::before {
+    background: #4285f4;
+}
+.progress-css::before {
+    background: #34a853;
+}
+.progress-js::before {
+    background: #fbbc05;
+}
+.progress-react::before {
+    background: #673ab7;
+}
+
+.portfolio-box .portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+.portfolio-box:hover .portfolio-layer {
+    transform: translateY(0);
+}
+
+
+.portfolio-layer h4 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-top: 50px;
+}
+
+.portfolio-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    background: var(--text-color);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-layer a:hover {
+    transform: scale(1.1);
+}
+
+.portfolio-layer a i {
+    font-size: 2.5rem;
+    color: var(--second-bg-color);
+}
+
+.project-info {
+    background: var(--main-color);
+    padding: 1rem;
+    text-align: left;
+
+}
+
+.project-info h4 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    margin: 0.2rem 0 1rem;
+    color: #666;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .portfolio-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+    }
+
+    .portfolio-box {
+        margin-top: 30px; /* Reduce spacing for medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+
+    .filter-btn {
+        flex: 1 1 100%; /* Full width buttons */
+        margin: 5px 0; /* Vertical margin */
+    }
+
+    .portfolio-box {
+        margin-top: 20px; /* Reduce spacing for smaller screens */
+    }
+
+    .portfolio-layer h4 {
+        font-size: 1.2rem; /* Adjust title font size */
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+        margin-left: -3px;
+    }
+
+    .portfolio-layer h4 {
+        font-size: 1rem; /* Adjust title font size */
+    }
+
+    .project-info h4 {
+        font-size: 1rem; /* Adjust project title font size */
+    }
+
+    .project-info p {
+        font-size: 0.8rem; /* Adjust project description font size */
+    }
+}
+
+
+
+.contact h2 {
+    margin-bottom: 7rem;
+    margin-top: 15rem;
+  
+    text-align: center;
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: var(--second-bg-color);
+    border-radius: .8rem;
+    margin: .7rem 0;
+}
+
+.contact form .input-box input {
+    width: 49%;
+}
+
+.contact form textarea {
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) { /* Adjust the max-width as needed */
+    .contact form {
+        margin-right: 40px; /* Add right margin */
+    }
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+    margin-top: 50px;
+    height: 70px;
+}
+
+.footer-text p {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-left: 500px;
+}
+
+.footer-iconTop {
+    position: fixed; /* Fix the icon's position */
+    bottom: 80px; /* Position from the bottom */
+    right: 10px; /* Position from the right */
+    opacity: 0; /* Start as invisible */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.footer-iconTop.show {
+    opacity: 1; /* Make it visible when the class is added */
+}
+
+.footer-iconTop a {
+    display: inline-flex;
+    justify-content: center; /* Center the icon */
+    align-items: center; /* Center the icon */
+    padding: .8rem;
+    background: var(--main-color);
+    border-radius: .8rem;
+    transition: .5s ease; /* Corrected transition timing */
+}
+
+.footer-iconTop a:hover {
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--second-bg-color);
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        height: 90px; /* Allow height to adjust based on content */
+        padding: 2rem 5%; /* Adjust padding for smaller screens */
+    }
+
+    .footer-text p {
+        font-size: 1.4rem; /* Reduce font size for smaller screens */
+        text-align: center; /* Center the text */
+        margin-left: -20px;
+    }
+
+   
+}
+
